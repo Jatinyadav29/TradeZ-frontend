@@ -1,67 +1,35 @@
-import React, { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
 
 const ContactSection = () => {
-  const sectionRef = useRef(null);
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-
-      tl.fromTo(
-        ".cta-element",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-        },
-      );
-    },
-    { scope: sectionRef },
-  );
-
   return (
     <section
-      ref={sectionRef}
       id="contact"
       className="relative w-full py-32 px-4 sm:px-6 md:px-8 z-20 bg-[#050505] overflow-hidden border-t border-white/5 flex flex-col items-center justify-center text-center"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-150 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-emerald-900/20 via-transparent to-transparent pointer-events-none blur-2xl"></div>
 
       <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center">
-        <div className="cta-element inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-8">
           <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></span>
           <span className="text-[10px] font-bold text-emerald-400 tracking-widest uppercase">
             Get Connected
           </span>
         </div>
 
-        <h2 className="cta-element text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+        <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
           Unlock Your Trading <br className="hidden sm:block" />
           <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-cyan-400 drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">
             Superpowers.
           </span>
         </h2>
 
-        <p className="cta-element text-gray-400 text-base md:text-xl mb-12 max-w-xl">
+        <p className="text-gray-400 text-base md:text-xl mb-12 max-w-xl">
           Join thousands of global prop traders mastering the markets with
           zero-latency data and automated journaling.
         </p>
 
         <form
-          className="cta-element w-full max-w-md flex flex-col sm:flex-row items-center p-1.5 bg-[#0a0a0a] border border-white/10 rounded-2xl sm:rounded-full shadow-2xl shadow-emerald-900/10 transition-all focus-within:border-emerald-500/50 focus-within:shadow-[0_0_30px_rgba(16,185,129,0.15)] mb-8"
+          className="w-full max-w-md flex flex-col sm:flex-row items-center p-1.5 bg-[#0a0a0a] border border-white/10 rounded-2xl sm:rounded-full shadow-2xl shadow-emerald-900/10 transition-all focus-within:border-emerald-500/50 focus-within:shadow-[0_0_30px_rgba(16,185,129,0.15)] mb-8"
           onSubmit={(e) => e.preventDefault()}
         >
           <div className="flex items-center flex-1 w-full pl-4 py-3 sm:py-0">
@@ -93,7 +61,7 @@ const ContactSection = () => {
           </button>
         </form>
 
-        <div className="cta-element flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4">
           <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">
             Join the Community
           </p>

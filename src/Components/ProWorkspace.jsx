@@ -1,9 +1,4 @@
-import React, { useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState } from "react";
 
 const pricingPlans = [
   {
@@ -53,48 +48,10 @@ const pricingPlans = [
 ];
 
 const PricingSection = () => {
-  const sectionRef = useRef(null);
   const [isYearly, setIsYearly] = useState(true);
-
-  useGSAP(
-    () => {
-      gsap.fromTo(
-        ".pricing-header",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-          },
-        },
-      );
-
-      gsap.fromTo(
-        ".pricing-card",
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: ".pricing-grid",
-            start: "top 85%",
-          },
-        },
-      );
-    },
-    { scope: sectionRef },
-  );
 
   return (
     <section
-      ref={sectionRef}
       id="pricing"
       className="relative w-full py-24 px-4 sm:px-6 md:px-8 lg:px-16 z-20 bg-[#050505] overflow-hidden"
     >
@@ -103,23 +60,23 @@ const PricingSection = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-          <div className="pricing-header inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></span>
             <span className="text-[10px] font-bold text-emerald-400 tracking-widest uppercase">
               Transparent Pricing
             </span>
           </div>
 
-          <h2 className="pricing-header text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
             Plans for Every Trader
           </h2>
 
-          <p className="pricing-header text-gray-400 max-w-2xl text-base md:text-lg leading-relaxed mb-10">
+          <p className="text-gray-400 max-w-2xl text-base md:text-lg leading-relaxed mb-10">
             Whether you are just starting out or managing a 7-figure funded
             account, we have a plan built for your exact needs.
           </p>
 
-          <div className="pricing-header flex items-center bg-[#111] border border-white/10 rounded-full p-1 shadow-lg">
+          <div className="flex items-center bg-[#111] border border-white/10 rounded-full p-1 shadow-lg">
             <button
               onClick={() => setIsYearly(true)}
               className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
@@ -146,11 +103,11 @@ const PricingSection = () => {
           </div>
         </div>
 
-        <div className="pricing-grid grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center max-w-6xl mx-auto">
           {pricingPlans.map((plan, index) => (
             <div
               key={index}
-              className={`pricing-card relative group rounded-[2rem] flex flex-col p-8 transition-all duration-500 ${
+              className={`relative group rounded-[2rem] flex flex-col p-8 transition-all duration-500 ${
                 plan.isPopular
                   ? "bg-[#0a0a0a] border-2 border-emerald-500 shadow-[0_0_40px_rgba(16,185,129,0.2)] md:-translate-y-4"
                   : "bg-[#111] border border-white/5 hover:border-emerald-500/30 hover:bg-[#141414]"

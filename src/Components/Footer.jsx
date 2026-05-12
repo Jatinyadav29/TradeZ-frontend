@@ -1,9 +1,4 @@
-import React, { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
 
 const footerLinks = [
   {
@@ -21,45 +16,15 @@ const footerLinks = [
 ];
 
 const Footer = () => {
-  const footerRef = useRef(null);
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 90%",
-        },
-      });
-
-      tl.fromTo(
-        ".footer-anim",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power3.out",
-        },
-      );
-    },
-    { scope: footerRef },
-  );
-
   return (
-    <footer
-      ref={footerRef}
-      className="relative w-full px-4 sm:px-6 md:px-8 py-8 z-20 bg-[#050505] overflow-hidden"
-    >
+    <footer className="relative w-full px-4 sm:px-6 md:px-8 py-8 z-20 bg-[#050505] overflow-hidden">
       <div className="relative max-w-7xl mx-auto rounded-[2rem] bg-linear-to-b from-[#0a0a0a] via-[#050505] to-[#011c14] border border-white/5 border-t-white/10 overflow-hidden p-8 md:p-12 lg:p-16 shadow-2xl shadow-emerald-900/5">
-        {/* Aesthetic Background Layers */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-size-[32px_32px] mask-[radial-gradient(ellipse_80%_80%_at_50%_100%,#000_20%,transparent_100%)] pointer-events-none"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_left,var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent pointer-events-none"></div>
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-150 bg-[radial-gradient(ellipse_at_bottom,var(--tw-gradient-stops))] from-emerald-500/10 via-emerald-900/20 to-transparent pointer-events-none blur-3xl"></div>
 
         <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-16 md:mb-24">
-          <div className="footer-anim flex flex-col max-w-sm">
+          <div className="flex flex-col max-w-sm">
             <a href="#" className="inline-block mb-6">
               <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
                 Trade<span className="text-emerald-500">Z</span>
@@ -118,7 +83,7 @@ const Footer = () => {
 
           <div className="flex flex-wrap gap-12 sm:gap-16 lg:gap-24">
             {footerLinks.map((column, idx) => (
-              <div key={idx} className="footer-anim flex flex-col">
+              <div key={idx} className="flex flex-col">
                 <h4 className="text-white font-bold mb-6 tracking-wide text-sm md:text-base">
                   {column.title}
                 </h4>
@@ -139,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="footer-anim relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10">
+        <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10">
           <p className="text-gray-500 text-xs md:text-sm text-center md:text-left">
             © 2026 TradeZ. All rights reserved.
           </p>

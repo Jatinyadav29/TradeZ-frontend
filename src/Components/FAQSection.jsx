@@ -1,9 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState } from "react";
 
 const faqs = [
   {
@@ -39,31 +34,7 @@ const faqs = [
 ];
 
 const FAQSection = () => {
-  const sectionRef = useRef(null);
   const [openIndex, setOpenIndex] = useState(null);
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-
-      tl.fromTo(
-        ".faq-header",
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out" },
-      ).fromTo(
-        ".faq-row",
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power2.out" },
-        "-=0.4",
-      );
-    },
-    { scope: sectionRef },
-  );
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -71,29 +42,10 @@ const FAQSection = () => {
 
   const FAQItem = ({ faq, index }) => {
     const isOpen = openIndex === index;
-    const contentRef = useRef(null);
-
-    useEffect(() => {
-      if (isOpen) {
-        gsap.to(contentRef.current, {
-          height: "auto",
-          opacity: 1,
-          duration: 0.4,
-          ease: "power2.out",
-        });
-      } else {
-        gsap.to(contentRef.current, {
-          height: 0,
-          opacity: 0,
-          duration: 0.6,
-          ease: "power2.inOut",
-        });
-      }
-    }, [isOpen]);
 
     return (
       <div
-        className={`faq-row group relative w-full border-b transition-colors duration-300 ${
+        className={`group relative w-full border-b transition-colors duration-300 ${
           isOpen
             ? "border-emerald-500/50"
             : "border-white/10 hover:border-white/30"
@@ -136,10 +88,16 @@ const FAQSection = () => {
           </div>
         </button>
 
-        <div ref={contentRef} className="h-0 opacity-0 overflow-hidden">
-          <p className="pb-6 pr-8 text-gray-400 text-sm md:text-base leading-relaxed">
-            {faq.answer}
-          </p>
+        <div
+          className={`grid transition-all duration-400 ease-in-out ${
+            isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <p className="pb-6 pr-8 text-gray-400 text-sm md:text-base leading-relaxed">
+              {faq.answer}
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -147,7 +105,6 @@ const FAQSection = () => {
 
   return (
     <section
-      ref={sectionRef}
       id="faq"
       className="relative w-full py-24 px-4 sm:px-6 md:px-8 z-20 bg-[#050505] overflow-hidden border-t border-white/5"
     >
@@ -155,14 +112,14 @@ const FAQSection = () => {
 
       <div className="max-w-3xl mx-auto relative z-10">
         <div className="flex flex-col items-center text-center mb-12 md:mb-20">
-          <div className="faq-header inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></span>
             <span className="text-[10px] font-bold text-emerald-400 tracking-widest uppercase">
               Support
             </span>
           </div>
 
-          <h2 className="faq-header text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
             Frequently Asked <br className="hidden md:block" />
             <span className="text-gray-500">Questions.</span>
           </h2>

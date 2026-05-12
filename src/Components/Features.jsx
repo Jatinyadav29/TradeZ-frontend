@@ -1,12 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState, useEffect } from "react";
 
 const Features = () => {
-  const sectionRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   const [activeCard, setActiveCard] = useState(-1);
 
@@ -30,46 +24,8 @@ const Features = () => {
     return () => clearInterval(interval);
   }, [isMobile]);
 
-  useGSAP(
-    () => {
-      gsap.fromTo(
-        ".feature-header",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-          },
-        },
-      );
-
-      gsap.fromTo(
-        ".bento-card",
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: ".bento-grid",
-            start: "top 75%",
-          },
-        },
-      );
-    },
-    { scope: sectionRef },
-  );
-
   return (
     <section
-      ref={sectionRef}
       id="features"
       className="relative w-full py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-16 z-20 bg-[#050505] overflow-hidden"
     >
@@ -77,28 +33,28 @@ const Features = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col items-center text-center mb-12 md:mb-20">
-          <div className="feature-header inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></span>
             <span className="text-[10px] font-bold text-emerald-400 tracking-widest uppercase">
               Core Features
             </span>
           </div>
 
-          <h2 className="feature-header text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
             Everything you need. <br className="hidden md:block" />
             <span className="text-gray-500">Nothing you don't.</span>
           </h2>
 
-          <p className="feature-header text-gray-400 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed px-4 md:px-0">
+          <p className="text-gray-400 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed px-4 md:px-0">
             Stop gambling, start trading. We provide professional-grade,
             zero-latency tools to help you master Forex, Crypto, and US Indices
             without risking real capital.
           </p>
         </div>
 
-        <div className="bento-grid grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           <div
-            className={`bento-card group col-span-1 md:col-span-2 relative overflow-hidden rounded-[2rem] bg-[#111] border transition-all duration-500 p-6 md:p-8
+            className={`group col-span-1 md:col-span-2 relative overflow-hidden rounded-[2rem] bg-[#111] border transition-all duration-500 p-6 md:p-8
             ${activeCard === 0 ? "border-emerald-500/30 shadow-[0_0_40px_rgba(16,185,129,0.1)]" : "border-white/5 hover:border-emerald-500/30 hover:shadow-[0_0_40px_rgba(16,185,129,0.1)]"}`}
           >
             <div
@@ -192,7 +148,7 @@ const Features = () => {
           </div>
 
           <div
-            className={`bento-card group col-span-1 relative overflow-hidden rounded-[2rem] bg-[#111] border transition-all duration-500 p-6 md:p-8 flex flex-col justify-between
+            className={`group col-span-1 relative overflow-hidden rounded-[2rem] bg-[#111] border transition-all duration-500 p-6 md:p-8 flex flex-col justify-between
             ${activeCard === 1 ? "border-blue-500/30 shadow-[0_0_40px_rgba(59,130,246,0.1)]" : "border-white/5 hover:border-blue-500/30 hover:shadow-[0_0_40px_rgba(59,130,246,0.1)]"}`}
           >
             <div
@@ -239,7 +195,7 @@ const Features = () => {
           </div>
 
           <div
-            className={`bento-card group col-span-1 relative overflow-hidden rounded-[2rem] bg-[#111] border transition-all duration-500 p-6 md:p-8
+            className={`group col-span-1 relative overflow-hidden rounded-[2rem] bg-[#111] border transition-all duration-500 p-6 md:p-8
             ${activeCard === 2 ? "border-orange-500/30 shadow-[0_0_40px_rgba(249,115,22,0.1)]" : "border-white/5 hover:border-orange-500/30 hover:shadow-[0_0_40px_rgba(249,115,22,0.1)]"}`}
           >
             <div
@@ -285,7 +241,7 @@ const Features = () => {
                 <span
                   className={activeCard === 2 ? "hidden" : "group-hover:hidden"}
                 >
-                  9ms Latency
+                  4ms Latency
                 </span>
                 <span
                   className={
@@ -299,7 +255,7 @@ const Features = () => {
           </div>
 
           <div
-            className={`bento-card group col-span-1 md:col-span-2 relative overflow-hidden rounded-[2rem] bg-[#111] border transition-all duration-500 p-6 md:p-8
+            className={`group col-span-1 md:col-span-2 relative overflow-hidden rounded-[2rem] bg-[#111] border transition-all duration-500 p-6 md:p-8
             ${activeCard === 3 ? "border-purple-500/30 shadow-[0_0_40px_rgba(168,85,247,0.1)]" : "border-white/5 hover:border-purple-500/30 hover:shadow-[0_0_40px_rgba(168,85,247,0.1)]"}`}
           >
             <div

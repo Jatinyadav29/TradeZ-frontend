@@ -6,12 +6,14 @@ import Features from "../Components/Features";
 import Hero from "../Components/Hero";
 import IntegrationSection from "../Components/IntegrationSection";
 import Layout from "../Components/Layout";
+import LiveFeed from "../Components/LiveFeed";
 import ProWorkspace from "../Components/ProWorkspace";
 
 const Home = () => {
   return (
     <div>
       <Layout>
+        <LiveFeed />
         <Hero />
         <Features />
         <IntegrationSection />
