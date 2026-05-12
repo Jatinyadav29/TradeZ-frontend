@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 
-import StatsPanel from "../components/dashboard/StatsPanel";
-import PerformanceChart from "../components/dashboard/PerformanceChart";
-import TradingObjectives from "../components/dashboard/TradingObjectives";
-import MonthlyPnL from "../components/dashboard/MonthlyPnL";
-import HallOfFame from "../components/dashboard/HallOfFame";
-import OrderFlowPnL from "../components/dashboard/OrderFlowPnL";
+import StatsPanel from "../Components/dashboard/StatsPanel";
+import PerformanceChart from "../Components/dashboard/PerformanceChart";
+import TradingObjectives from "../Components/dashboard/TradingObjectives";
+import MonthlyPnL from "../Components/dashboard/MonthlyPnL";
+import HallOfFame from "../Components/dashboard/HallOfFame";
+import OrderFlowPnL from "../Components/dashboard/OrderFlowPnL";
 
 const Dashboard = () => {
   const {
