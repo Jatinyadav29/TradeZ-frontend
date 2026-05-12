@@ -2,10 +2,10 @@ import React from "react";
 import { ReactLenis } from "lenis/react";
 import "lenis/dist/lenis.css";
 
-import Aurora from "./Aurora";
-import LiveFeed from "./LiveFeed";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Aurora from "../Aurora";
+import LiveFeed from "../Home/LiveFeed";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 
 const Layout = ({ children }) => {
   return (

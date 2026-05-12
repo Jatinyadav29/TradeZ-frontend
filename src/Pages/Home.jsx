@@ -1,13 +1,13 @@
-import CommunitySection from "../Components/CommunitySection";
-import ContactSection from "../Components/ContactSection";
-import CtaSection from "../Components/CtaSection";
-import FAQSection from "../Components/FAQSection";
-import Features from "../Components/Features";
-import Hero from "../Components/Hero";
-import IntegrationSection from "../Components/IntegrationSection";
-import Layout from "../Components/Layout";
-import LiveFeed from "../Components/LiveFeed";
-import ProWorkspace from "../Components/ProWorkspace";
+import CommunitySection from "../Components/Home/CommunitySection";
+import ContactSection from "../Components/Home/ContactSection";
+import CtaSection from "../Components/Home/CtaSection";
+import FAQSection from "../Components/Home/FAQSection";
+import Features from "../Components/Home/Features";
+import Hero from "../Components/Home/Hero";
+import IntegrationSection from "../Components/Home/IntegrationSection";
+import Layout from "../Components/Layouts/Layout";
+import LiveFeed from "../Components/Home/LiveFeed";
+import ProWorkspace from "../Components/Home/ProWorkspace";
 
 const Home = () => {
   return (

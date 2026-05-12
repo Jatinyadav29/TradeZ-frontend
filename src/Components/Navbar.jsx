@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -51,34 +53,63 @@ const Navbar = () => {
           />
         </div>
 
-        <button className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-colors relative ml-1">
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <SignedIn>
+          <Link
+            to="/app/dashboard"
+            className="hidden md:flex items-center justify-center px-4 py-1.5 text-sm font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 rounded-full transition-all mr-2"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-            />
-          </svg>
-          <span className="absolute top-1.5 right-2 w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
-        </button>
+            Go to Dashboard
+          </Link>
 
-        <button className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center overflow-hidden hover:opacity-80 transition-opacity shadow-[0_0_10px_rgba(0,0,0,0.5)]">
-          <img
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
-            alt="User Profile"
-            className="w-full h-full object-cover"
-          />
-        </button>
+          <button className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-colors relative ml-1 hidden md:block">
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+              />
+            </svg>
+            <span className="absolute top-1.5 right-2 w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+          </button>
+
+          <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center overflow-hidden hover:border-emerald-500/50 transition-colors">
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: "w-full h-full",
+                  userButtonPopoverCard:
+                    "border border-white/10 bg-[#0a0a0a] shadow-2xl",
+                },
+              }}
+            />
+          </div>
+        </SignedIn>
+
+        <SignedOut>
+          <Link
+            to="/sign-in"
+            className="hidden md:flex items-center justify-center px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white transition-colors"
+          >
+            Sign In
+          </Link>
+          <Link
+            to="/sign-up"
+            className="flex items-center justify-center px-4 py-1.5 text-sm font-bold text-black bg-emerald-500 hover:bg-emerald-400 rounded-full transition-all shadow-[0_0_10px_rgba(16,185,129,0.3)]"
+          >
+            Get Started
+          </Link>
+        </SignedOut>
 
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-md transition-colors"
+          className="lg:hidden p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-md transition-colors ml-2"
         >
           <svg
             className="w-6 h-6"
@@ -136,6 +167,35 @@ const Navbar = () => {
             >
               FAQs
             </a>
+
+            <SignedOut>
+              <div className="w-full border-t border-white/10 my-2"></div>
+              <Link
+                to="/sign-in"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="hover:text-white transition-all"
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/sign-up"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-emerald-400 font-bold transition-all"
+              >
+                Get Started Free
+              </Link>
+            </SignedOut>
+
+            <SignedIn>
+              <div className="w-full border-t border-white/10 my-2"></div>
+              <Link
+                to="/app/dashboard"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-emerald-400 font-bold transition-all"
+              >
+                Go to Dashboard
+              </Link>
+            </SignedIn>
           </div>
         </div>
       )}
