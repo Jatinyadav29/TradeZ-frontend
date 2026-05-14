@@ -4,6 +4,16 @@ import { useGSAP } from "@gsap/react";
 
 // Your custom array of direct logo URLs
 const forexInfrastructureLogos = [
+  "https://images.icon-icons.com/2699/PNG/512/netflix_logo_icon_170919.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/3840px-Google_%22G%22_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+  "https://img.favpng.com/20/1/2/microsoft-logo-icon-png-favpng-685u6bvjmVTSVQvgf1yFZk2yh.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "https://upload.wikimedia.org/wikipedia/sco/thumb/2/21/Nvidia_logo.svg/3840px-Nvidia_logo.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Tesla_logo.png/500px-Tesla_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+  "https://cdn.freebiesupply.com/logos/large/2x/amd-4-logo-png-transparent.png",
+  "https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "https://upload.wikimedia.org/wikipedia/commons/6/64/Intel-logo-2022.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "https://www.freelogovectors.net/wp-content/uploads/2023/09/snapdragon-logo-01-freelogovectors.net_.png",
   "https://fxscouts.com/wp-content/uploads/sites/20/2024/08/mt4-sign.png",
   "https://www.trusted-broker-reviews.com/wp-content/uploads/ctrader-logo-1.webp",
   "https://orbitglobalfx.com/assets/images/metatrader5-logo.png",

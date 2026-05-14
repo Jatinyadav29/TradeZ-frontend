@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import TradesAnalytics from "../components/trades/TradesAnalytics";
-import MasterDataTable from "../components/trades/MasterDataTable";
+import TradesAnalytics from "../Components/trades/TradesAnalytics";
+import MasterDataTable from "../Components/trades/MasterDataTable";
 
 const Trades = () => {
   const { trades, startingBalance } = useSelector((state) => state.trades);

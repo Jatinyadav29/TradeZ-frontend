@@ -1,6 +1,6 @@
 import React from "react";
-import WatchlistTable from "../components/market/WatchlistTable";
-import EconomicCalendar from "../components/market/EconomicCalendar";
+import WatchlistTable from "../Components/market/WatchlistTable";
+import EconomicCalendar from "../Components/market/EconomicCalendar";
 import LiveFeed from "../Components/market/LiveFeed";
 
 const Market = () => {
