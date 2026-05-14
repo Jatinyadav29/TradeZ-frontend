@@ -22,9 +22,8 @@ import AppLayout from "./Components/Layouts/AppLayout";
 
 import Home from "./Pages/Home";
 import Dashboard from "./Pages/Dashboard";
-
-const Trades = () => <div className="p-8 text-white">Trade Logbook</div>;
-const Market = () => <div className="p-8 text-white">Live Market Feed</div>;
+import Trades from "./Pages/Trades";
+import Market from "./Pages/Market";
 
 const ProtectedRoute = ({ children }) => {
   return (

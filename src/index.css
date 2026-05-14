@@ -1,47 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "@fontsource-variable/geist";
 
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
 
-/* Gantari Font Family */
-
+/* Gantari */
 @font-face {
   font-family: "Gantari";
   src: url("/Fonts/Gantari/Gantari-Thin.ttf") format("truetype");
   font-weight: 100;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Gantari";
   src: url("/Fonts/Gantari/Gantari-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Gantari";
   src: url("/Fonts/Gantari/Gantari-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Gantari";
   src: url("/Fonts/Gantari/Gantari-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Gantari";
   src: url("/Fonts/Gantari/Gantari-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Gantari";
   src: url("/Fonts/Gantari/Gantari-ExtraBold.ttf") format("truetype");
@@ -49,22 +43,18 @@
   font-style: normal;
 }
 
-/* Louis George Cafe Font Family */
-
 @font-face {
   font-family: "Louis";
   src: url("/Fonts/Louis/Louis George Cafe Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Louis";
   src: url("/Fonts/Louis/Louis George Cafe.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Louis";
   src: url("/Fonts/Louis/Louis George Cafe Bold.ttf") format("truetype");
@@ -72,15 +62,18 @@
   font-style: normal;
 }
 
-* {
-  font-family: "Outfit", sans-serif;
-}
-
 @custom-variant dark (&:is(.dark *));
 
+/* Add this at the very bottom of index.css */
+.font1 {
+  font-family: "Louis", ui-serif, Georgia, serif !important;
+}
+
 @theme inline {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Louis", ui-serif, Georgia, serif;
   --font-heading: var(--font-sans);
-  --font-sans: "Geist Variable", sans-serif;
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -196,10 +189,24 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply font-sans bg-background text-foreground;
   }
 
   html {
     @apply scroll-smooth;
   }
+}
+
+@keyframes text-shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.animate-text-shimmer {
+  animation: text-shimmer 5s linear infinite;
+}
+
+.text-glow {
+  filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.4));
 }

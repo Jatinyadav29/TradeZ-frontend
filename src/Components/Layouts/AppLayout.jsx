@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, Outlet, Link } from "react-router-dom";
 import { UserButton } from "@clerk/clerk-react";
+
+import SearchModal from "../SearchModal";
+import NotificationDropdown from "../Notification/NotificationDropdown";
 
 const navItems = [
   {
@@ -64,13 +67,33 @@ const navItems = [
 
 const AppLayout = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <div className="h-screen w-full bg-[#050505] text-white flex overflow-hidden font-sans">
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
+
       <aside className="hidden xl:flex flex-col w-64 border-r border-white/5 bg-[#0a0a0a] z-30 shrink-0">
         <div className="h-16 flex items-center px-6 border-b border-white/5">
           <div className="font-bold text-xl tracking-tighter text-white">
-            Trade<span className="text-emerald-500">Z</span>
+            <Link to="/">
+              Trade<span className="text-emerald-500">Z</span>
+            </Link>
           </div>
         </div>
 
@@ -133,13 +156,18 @@ const AppLayout = () => {
               </svg>
             </button>
             <div className="font-bold text-lg tracking-tighter text-white">
-              Trade<span className="text-emerald-500">Z</span>
+              <Link to="/">
+                Trade<span className="text-emerald-500">Z</span>
+              </Link>
             </div>
           </div>
 
-          <div className="hidden xl:flex relative w-72 group">
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            className="hidden xl:flex relative w-72 items-center bg-[#111] border border-white/5 hover:border-emerald-500/30 hover:bg-white/5 rounded-full py-2 px-4 transition-all group"
+          >
             <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 group-focus-within:text-emerald-500 transition-colors"
+              className="w-4 h-4 text-gray-500 group-hover:text-emerald-400 transition-colors mr-3"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -151,23 +179,19 @@ const AppLayout = () => {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-            <input
-              type="text"
-              placeholder="Search ticker (e.g., NVDA)..."
-              className="w-full bg-[#111] border border-white/5 rounded-full py-2 pl-10 pr-4 text-sm text-gray-200 focus:outline-none focus:border-emerald-500/50 focus:bg-white/5 transition-all placeholder:text-gray-600"
-            />
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 opacity-50 group-focus-within:opacity-0 transition-opacity pointer-events-none">
-              <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-white/10 rounded border border-white/20">
-                ⌘
-              </kbd>
-              <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-white/10 rounded border border-white/20">
-                K
-              </kbd>
-            </div>
-          </div>
+            <span className="text-sm text-gray-500 flex-1 text-left">
+              Search...
+            </span>
+            <span className="flex items-center justify-center px-1.5 py-0.5 rounded-md bg-[#050505] border border-white/10 text-[9px] font-bold text-gray-400 tracking-widest">
+              Ctrl + K
+            </span>
+          </button>
 
-          <div className="flex items-center gap-4 xl:gap-6 ml-auto xl:ml-0">
-            <button className="relative text-gray-400 hover:text-white transition-colors">
+          <div className="flex items-center gap-3 xl:gap-6 ml-auto xl:ml-0">
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="xl:hidden p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+            >
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -178,11 +202,37 @@ const AppLayout = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-              <span className="absolute top-0 right-0 w-2 h-2 bg-emerald-500 rounded-full border-2 border-[#050505]"></span>
             </button>
+
+            <div className="relative flex items-center">
+              <button
+                onClick={() => setShowNotifications(!showNotifications)}
+                className="relative p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-full transition-colors"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  />
+                </svg>
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-emerald-500 rounded-full border-2 border-[#050505]"></span>
+              </button>
+
+              <NotificationDropdown
+                isOpen={showNotifications}
+                onClose={() => setShowNotifications(false)}
+              />
+            </div>
 
             <div className="h-8 w-8 rounded-full border border-white/10 flex items-center justify-center hover:border-emerald-500/50 transition-colors">
               <UserButton

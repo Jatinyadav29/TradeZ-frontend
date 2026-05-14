@@ -3,31 +3,21 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 // Your custom array of direct logo URLs
-const nifty50Domainslogo = [
-  "https://rilstaticasset.akamaized.net/sites/default/files/2023-02/S.1_2.jpg",
-  "https://indiacsr.in/wp-content/uploads/2024/05/tcs-logo-india-csr-750x544.jpg",
-  "https://companieslogo.com/img/orig/HDB-bb6241fe.png?t=1720244492",
-  "https://i.pinimg.com/736x/ff/d5/31/ffd531a6a78464512a97848e14506738.jpg",
-  "https://static.vecteezy.com/system/resources/previews/020/336/451/non_2x/infosys-logo-infosys-icon-free-free-vector.jpg",
-  "https://thebranvetica.com/assets/img/SBI_Logo.webp",
-  "https://www.chittorgarh.net/images/ipo/bharti-airtel-logo.png",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/ITC_Limited_Logo.svg/1280px-ITC_Limited_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
-  "https://img.etimg.com/thumb/msid-63281145,width-640,height-480,imgsize-11382,resizemode-4/logo.jpg",
-  "https://indidesign.in/wp-content/uploads/2019/07/Bajaj_Indi-website-work-01-2.jpg",
-  "https://assets.upstox.com/content/assets/images/logos/NSE_EQ%7CINE155A01022.png",
-  "https://crystalpng.com/wp-content/uploads/2025/08/Maruti-Suzuki-Logo-png.png",
-  "https://mechanical.co.in/wp-content/uploads/2024/07/sun-pharma-logo-768x452.webp",
-  "https://logowik.com/content/uploads/images/mahindra-auto-with-wordmark7167.logowik.com.webp",
-  "https://images.squarespace-cdn.com/content/v1/66e806e6c1862d4e0dcade8e/971637bb-f0e5-4e23-9d03-6c990eff7bab/Elephant+Design_Axis+Bank_Axis+Bank_Retail+Design+_Financial+Services+%26+Fintech_in-branch+%26+retail+banking+experience_3.PNG",
-  "https://companieslogo.com/img/orig/KOTAKBANK.NS-36440c5e.png?t=1720244492",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL2a418p8twUZDZKHOggy9fkZSrnxyUZw6Bg&s",
-  "https://download.logo.wine/logo/HCL_Technologies/HCL_Technologies-Logo.wine.png",
-  "https://3.bp.blogspot.com/-NBvFXfmip_s/XKrDY5YYPyI/AAAAAAAACf0/IVjmdqwDXhIC38pF_xqa60_yD1BUCedxwCLcBGAs/w800/lowongan-kerja-pt-asian-paints-indonesia.jpg",
-  "https://crystalpng.com/wp-content/uploads/2025/03/nestle_logo.png",
-  "https://i.pinimg.com/736x/d3/ca/44/d3ca44ad81a24fcbe71b4e2d78e8d41b.jpg",
-  "https://s3-symbol-logo.tradingview.com/adani--600.png",
-  "https://pbs.twimg.com/profile_images/1087668345309081601/TgLGHi9__400x400.jpg",
-  "https://www.industrytransition.org/wp-content/uploads/2026/01/tata-steel-vector-logo-1-1.png",
+const forexInfrastructureLogos = [
+  "https://fxscouts.com/wp-content/uploads/sites/20/2024/08/mt4-sign.png",
+  "https://www.trusted-broker-reviews.com/wp-content/uploads/ctrader-logo-1.webp",
+  "https://orbitglobalfx.com/assets/images/metatrader5-logo.png",
+  "https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/logos/tradingview-ax7sxe5lm8knfaxwcaldi.png/tradingview-nct7p51k07roxa6picopf.png?_a=DATAiZAAZAA0",
+  "https://e7.pngegg.com/pngimages/727/671/png-clipart-bloomberg-round-logo-icons-logos-emojis-iconic-brands-thumbnail.png",
+  "https://www.pngall.com/wp-content/uploads/15/JP-Morgan-Logo-PNG-Cutout.png",
+  "https://www.vhv.rs/dpng/d/504-5049178_goldman-sachs-logo-goldman-sachs-logo-svg-hd.png",
+  "https://www.clipartmax.com/png/middle/249-2497862_hsbc-logo-hsbc-logo-png.png",
+  "Barclays",
+  "https://upload.wikimedia.org/wikipedia/commons/3/34/UBS_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "https://download.logo.wine/logo/Equinix/Equinix-Logo.wine.png",
+  "https://img.fazzaco.com/static/brokers/logo/logo11/Beeks_Financial_Cloud.png",
+  "https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2026/02/16162427/FTMO-Icon-2025-light.png",
+  "https://i0.wp.com/proptraders.club/wp-content/uploads/2022/11/myfundedfx-logo.png?resize=500%2C500&ssl=1",
 ];
 
 const IntegrationBackground = () => {
@@ -36,7 +26,7 @@ const IntegrationBackground = () => {
   const floatingNodes = useMemo(() => {
     return Array.from({ length: 48 }).map((_, i) => ({
       id: i,
-      url: nifty50Domainslogo[i % nifty50Domainslogo.length],
+      url: forexInfrastructureLogos[i % forexInfrastructureLogos.length],
       startX: Math.floor(Math.random() * 90) + 5,
       startY: Math.floor(Math.random() * 90) + 5,
       scale: Math.random() * 0.4 + 0.8,

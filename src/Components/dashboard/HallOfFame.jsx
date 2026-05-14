@@ -47,7 +47,7 @@ const HallOfFame = ({ leaderboard }) => {
               className="flex flex-col items-center flex-1 relative group w-1/3"
             >
               {isFirst && (
-                <div className="absolute -top-10 sm:-top-14 text-xl sm:text-3xl animate-bounce drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]">
+                <div className="absolute -top-10 sm:-top-14 text-xl sm:text-3xl drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]">
                   👑
                 </div>
               )}
